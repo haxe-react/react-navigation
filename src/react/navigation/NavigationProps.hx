@@ -3,7 +3,8 @@ package react.navigation;
 import haxe.Constraints;
 
 extern class NavigationProps<Param> {
-	function navigate(routeName:String, ?params:Param, ?action:Dynamic, ?key:String):Void;
+	@:overload(function (routeName:String, ?params:Dynamic, ?action:Dynamic):Void{})
+	function navigate(opt:{routeName:String, ?params:Dynamic, ?action:Dynamic, ?key:String}):Void;
 	
 	@:overload(function (routeName:String):Void{})
 	function goBack():Void;
@@ -14,11 +15,11 @@ extern class NavigationProps<Param> {
 	function isFocused():Bool;
 	function dispatch(action:Dynamic):Void;
 	
-	function push(routeName:String, ?params:Param, ?action:Dynamic):Void;
+	function push(routeName:String, ?params:Dynamic, ?action:Dynamic):Void;
 	@:overload(function ():Void{})
 	function pop(n:Int):Void;
 	function popToTop():Void;
-	function replace(routeName:String, ?params:Param, ?action:Dynamic):Void;
+	function replace(routeName:String, ?params:Dynamic, ?action:Dynamic):Void;
 	
 	var state(default, never):NavigationState<Param>;
 }
